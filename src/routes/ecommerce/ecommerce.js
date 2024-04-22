@@ -34,7 +34,7 @@ exports.checkcart = (ctx) => {
                 if(items[i].promotion != promotion_rules[0].rule && items[i].promotion != promotion_rules[1].rule && items[i].promotion != ""){
                     throw 0
                 }
-                if(items[i].amount <= 0 || items[i].amount <= 0){
+                if(items[i].amount <= 0 || items[i].unit_base_price <= 0){
                     throw 1
                 }
                 var discount = false
@@ -81,8 +81,8 @@ exports.checkcart = (ctx) => {
                 return ctx
             }
             else{
-                ctx.status = 400
-                ctx.body = errores[error]
+                ctx.status = 500
+                ctx.body = errores[2]
                 return ctx
             }
             
